@@ -5,29 +5,39 @@ export default {
   data() {
     return {
       projectsArr: [],
+      currentPage: "",
+      lastPage: "",
+      imgUrl: "http://127.0.0.1:8000/storage/",
+      url:"http://127.0.0.1:8000/api/projects?page="
     };
   },
   methods: {
-    getProjects() {
-      axios.get("http://127.0.0.1:8000/api/projects").then((res) => {
-        //console.log(res.data);
-
-        this.projectsArr = res.data.projects;
-  
-      });
+    getProjects(num) {
+      
+     
+      axios.get('http://127.0.0.1:8000/api/projects',
+        {
+         params: {
+              page: num
+             }
+        })
+        .then((res) => {
+          
+       
+          this.projectsArr = res.data.projects.data;
+          this.currentPage = res.data.projects.current_page;
+         this.lastPage = res.data.projects.last_page;
+        });
     },
-
-   
   },
   mounted() {
-    this.getProjects();
-
- 
+    this.getProjects(1);
   },
 };
 </script>
 <template>
   <h2 class="text-center my-2">Projects</h2>
+  <div class="container ">
   <div class="container d-flex flex-wrap">
     <div
       v-for="(item, i) in projectsArr"
@@ -35,6 +45,8 @@ export default {
       class="card m-2"
       style="width: 18rem"
     >
+
+    <img v-show ="item.image" :src="imgUrl+item.image" class="card-img-top" alt="...">
       <div class="card-body">
         <h3 class="text-capitalize">{{ item.project_name }}</h3>
         <h5 v-if="item.type !== null">{{  item.type.name}}</h5>
@@ -46,6 +58,29 @@ export default {
         </p>
       </div>
     </div>
+  
   </div>
+  <nav aria-label="Page navigation example">
+    <ul class="pagination">
+      <li class="page-item" :class="{ disabled: currentPage === 1 }">
+        <button class="page-link" @click="getProjects(currentPage - 1)">
+          Previous
+        </button>
+      </li>
+
+      <li class="page-item" v-for="(element, index) in lastPage" :key="index">
+        <button class="page-link" @click="getProjects(element)">
+          {{ element }}
+        </button>
+      </li>
+
+      <li class="page-item" :class="{ disabled: currentPage === lastPage }">
+        <button class="page-link" @click="getProjects(currentPage + 1)">
+          Next
+        </button>
+      </li>
+    </ul>
+  </nav>
+</div>
 </template>
 <style lang="scss" scoped></style>
