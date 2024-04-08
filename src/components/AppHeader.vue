@@ -4,10 +4,10 @@ export default {
 };
 </script>
 <template>
-  <header>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">Boolfolio</a>
+  <header class="">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary py-2">
+      <div class="container align-items-center">
+        <h1 class="navbar-brand mb-0" href="#">Boolfolio</h1>
         <button
           class="navbar-toggler"
           type="button"
