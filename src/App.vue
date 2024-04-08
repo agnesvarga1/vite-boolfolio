@@ -1,15 +1,18 @@
 <script>
+import AppHeader from "./components/AppHeader.vue";
 import AppMain from "./components/AppMain.vue";
+
 export default {
   name: "App",
   components: {
     AppMain,
+    AppHeader,
   },
 };
 </script>
 
 <template>
-  <h1 class="text-center my-2 text-success">Boolfolio</h1>
+  <AppHeader />
   <AppMain />
 </template>
 

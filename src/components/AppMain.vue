@@ -1,14 +1,16 @@
 <script>
 import axios from "axios";
+import AppHeader from "AppHeader.vue"
 export default {
   name: "AppMain",
+
   data() {
     return {
       projectsArr: [],
       currentPage: "",
       lastPage: "",
       imgUrl: "http://127.0.0.1:8000/storage/",
-      url:"http://127.0.0.1:8000/api/projects?page="
+      
     };
   },
   methods: {
@@ -38,7 +40,7 @@ export default {
 <template>
   <h2 class="text-center my-2">Projects</h2>
   <div class="container ">
-  <div class="container d-flex flex-wrap">
+  <div class="container d-flex flex-wrap justify-content-center">
     <div
       v-for="(item, i) in projectsArr"
       :key="item.id"
@@ -60,7 +62,8 @@ export default {
     </div>
   
   </div>
-  <nav aria-label="Page navigation example">
+  <div class="d-flex justify-content-center mt-3"> 
+    <nav aria-label="Page navigation example ">
     <ul class="pagination">
       <li class="page-item" :class="{ disabled: currentPage === 1 }">
         <button class="page-link" @click="getProjects(currentPage - 1)">
@@ -81,6 +84,8 @@ export default {
       </li>
     </ul>
   </nav>
+</div>
+  
 </div>
 </template>
 <style lang="scss" scoped></style>
