@@ -1,4 +1,5 @@
 <script>
+import { RouterLink } from "vue-router";
 export default {
   name: "AppHeader",
 };
@@ -22,7 +23,9 @@ export default {
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <route-link :to="{ name: home }"> Home </route-link>
+              <router-link :to="{ name: 'home' }" class="nav-link">
+                Home
+              </router-link>
             </li>
           </ul>
         </div>
@@ -30,4 +33,11 @@ export default {
     </nav>
   </header>
 </template>
-<style lang="scss" scoped></style>
+<style scoped>
+.nav-item {
+  cursor: pointer;
+}
+.nav-item:hover {
+  opacity: 0.7;
+}
+</style>
