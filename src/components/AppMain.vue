@@ -28,7 +28,7 @@ export default {
        
           this.projectsArr = res.data.projects.data;
           this.currentPage = res.data.projects.current_page;
-         this.lastPage = res.data.projects.last_page;
+          this.lastPage = res.data.projects.last_page;
         });
     },
   },
