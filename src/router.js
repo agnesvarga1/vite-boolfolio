@@ -1,7 +1,8 @@
-import { createRouter, createWebHistory } from "vue-router"; //webhistory salva browser history in pagina enable back arrow in browser
+import { createRouter, createWebHistory } from "vue-router"; //webhistory salva browser history in pagina to enable back arrow in browser
 
 import HomePage from "./pages/HomePage.vue";
 import ProjectsPage from "./pages/ProjectsPage.vue";
+import singleProject from "./pages/singleProject.vue";
 const router = createRouter({
   history: createWebHistory(),
   routes: [
@@ -14,6 +15,11 @@ const router = createRouter({
       path: "/projects",
       name: "projects",
       component: ProjectsPage,
+    },
+    {
+      path: "/projects/:slug",
+      name: "singleProjectPage",
+      component: singleProject,
     },
   ],
 });

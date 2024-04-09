@@ -27,7 +27,7 @@ export default {
                 Home
               </router-link>
             </li>
-            <li class="nav-link">
+            <li class="nav-item">
               <router-link :to="{ name: 'projects' }" class="nav-link">
                 Projects
               </router-link>
@@ -38,11 +38,4 @@ export default {
     </nav>
   </header>
 </template>
-<style scoped>
-.nav-item {
-  cursor: pointer;
-}
-.nav-item:hover {
-  opacity: 0.7;
-}
-</style>
+<style scoped></style>

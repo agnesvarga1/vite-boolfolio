@@ -1,6 +1,6 @@
 <script>
 import axios from "axios";
-import AppHeader from "./AppHeader.vue"
+
 export default {
   name: "AppMain",
 
